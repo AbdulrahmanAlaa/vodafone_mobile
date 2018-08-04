@@ -8,13 +8,21 @@ import React, { Component } from 'react';
 
 
 import Login from './screens/Login/Login';
+import Register from './screens/Register/Register';
+
+import { createStackNavigator } from 'react-navigation'
 
 
-export default class App extends Component {
-
-  render() {
-    return (
-      <Login/>
-    );
+export default createStackNavigator({
+  Home: {
+    screen: Login
+  },
+  Register: {
+    screen: Register
   }
-}
+},
+  {
+    initialRouteName: 'Home',
+    headerMode:'none'
+  }
+);
