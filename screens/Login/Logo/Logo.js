@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
+import { translate } from '../../../configurations/locals/i18n';
 
 const childStyle = {
     flex: 1,
@@ -10,7 +11,7 @@ const imageSrc = { url: require('../../../assets/images/vodafone.png') };
 
 export default () => {
     return (
-        <View style={{flex:2.5}}>
+        <View style={{ flex: 2.5 }}>
             {/* Logo Section */}
             <View style={{
                 flex: 1.5,
@@ -27,14 +28,14 @@ export default () => {
                     fontSize: 35,
                     color: 'white'
                 }}>
-                    Vodamerrce
-                    </Text>
+                    {translate('login.title')}
+                </Text>
                 <Text style={{
                     fontSize: 12,
                     color: 'lightgray'
                 }}>
-                    The leading telecommunications company in the world
-                     </Text>
+                    {translate('login.sub-title')}
+                </Text>
             </View>
         </View>
     )
