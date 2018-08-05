@@ -1,21 +1,31 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
 import { createStackNavigator } from 'react-navigation'
-
-
-import Login from './screens/Login/Login';
 import Register from './screens/Register/Register';
+import Aux from './containers/hoc/hoc';
+
+import {NetInfo} from 'react-native';
 
 
 
-export default createStackNavigator({
+NetInfo.getConnectionInfo().then((connectionInfo) => {
+  console.log('Initial, type: ' + connectionInfo.type + ', effectiveType: ' + connectionInfo.effectiveType);
+});
+function handleFirstConnectivityChange(connectionInfo) {
+  console.log('First change, type: ' + connectionInfo.type + ', effectiveType: ' + connectionInfo.effectiveType);
+  // NetInfo.removeEventListener(
+  //   'connectionChange',
+  //   handleFirstConnectivityChange
+  // );
+}
+NetInfo.addEventListener(
+  'connectionChange',
+  handleFirstConnectivityChange
+);
+
+
+
+const navigationStack = createStackNavigator({
   Home: {
-    screen: Login
+    screen: Aux
   },
   Register: {
     screen: Register
@@ -23,6 +33,8 @@ export default createStackNavigator({
 },
   {
     initialRouteName: 'Home',
-    headerMode:'none'
+    headerMode: 'none'
   }
-);
+)
+
+export default navigationStack;

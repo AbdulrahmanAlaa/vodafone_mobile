@@ -6,7 +6,7 @@ const childStyle = {
     flex: 1,
     alignItems: 'center'
 };
-export default () => {
+export default (props) => {
     return (
         <View style={childStyle} >
             {/* Email */}
@@ -14,10 +14,12 @@ export default () => {
                 iconName='envelope'
                 iconSize={15}
                 iconColor='white'
-                value=''
+                value={props.email}
                 placeholder='Email'
                 onChangeText={
-                    () => { }
+                   (text)=>{
+                        props.emailChanged(text);
+                    }
                 }
             ></TextWithIcon>
             {/* Password */}
